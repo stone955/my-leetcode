@@ -1,299 +1,104 @@
 package list
 
 import (
-	"reflect"
 	"testing"
 )
 
 func TestArrayList_Add(t *testing.T) {
-	type fields struct {
-		data []interface{}
-		size int
-	}
-	type args struct {
-		value interface{}
-	}
-	tests := []struct {
-		name    string
-		fields  fields
-		args    args
-		wantErr bool
-	}{
-		// TODO: Add test cases.
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			l := ArrayList{
-				data: tt.fields.data,
-				size: tt.fields.size,
-			}
-			if err := l.Add(tt.args.value); (err != nil) != tt.wantErr {
-				t.Errorf("Add() error = %v, wantErr %v", err, tt.wantErr)
-			}
-		})
-	}
+	l := NewArrayList()
+	_ = l.Add(1)
+	_ = l.Add(2)
+	_ = l.Add(3)
+	t.Logf("ArrayList String(): %v\n", l.String())
 }
 
 func TestArrayList_Get(t *testing.T) {
-	type fields struct {
-		data []interface{}
-		size int
+	l := NewArrayList()
+	v, err := l.Get(1)
+	if err != nil {
+		t.Fatalf("ArrayList Get(1) error: %v\n", err)
 	}
-	type args struct {
-		index int
-	}
-	tests := []struct {
-		name    string
-		fields  fields
-		args    args
-		want    interface{}
-		wantErr bool
-	}{
-		// TODO: Add test cases.
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			l := ArrayList{
-				data: tt.fields.data,
-				size: tt.fields.size,
-			}
-			got, err := l.Get(tt.args.index)
-			if (err != nil) != tt.wantErr {
-				t.Errorf("Get() error = %v, wantErr %v", err, tt.wantErr)
-				return
-			}
-			if !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("Get() got = %v, want %v", got, tt.want)
-			}
-		})
-	}
+	t.Logf("ArrayList Get(1): %v\n", v)
 }
 
 func TestArrayList_Set(t *testing.T) {
-	type fields struct {
-		data []interface{}
-		size int
-	}
-	type args struct {
-		index int
-		value interface{}
-	}
-	tests := []struct {
-		name    string
-		fields  fields
-		args    args
-		wantErr bool
-	}{
-		// TODO: Add test cases.
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			l := ArrayList{
-				data: tt.fields.data,
-				size: tt.fields.size,
-			}
-			if err := l.Set(tt.args.index, tt.args.value); (err != nil) != tt.wantErr {
-				t.Errorf("Set() error = %v, wantErr %v", err, tt.wantErr)
-			}
-		})
-	}
+	l := NewArrayList()
+	_ = l.Add(1)
+	_ = l.Add(2)
+	_ = l.Add(3)
+	t.Logf("ArrayList Before Set: %v\n", l.String())
+
+	_ = l.Set(2, 33)
+	t.Logf("ArrayList After Set: %v\n", l.String())
 }
 
 func TestArrayList_Size(t *testing.T) {
-	type fields struct {
-		data []interface{}
-		size int
-	}
-	tests := []struct {
-		name   string
-		fields fields
-		want   int
-	}{
-		// TODO: Add test cases.
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			l := ArrayList{
-				data: tt.fields.data,
-				size: tt.fields.size,
-			}
-			if got := l.Size(); got != tt.want {
-				t.Errorf("Size() = %v, want %v", got, tt.want)
-			}
-		})
-	}
+	l := NewArrayList()
+	t.Logf("ArrayList Size(): %v\n", l.Size())
+}
+
+func TestArrayList_Clear(t *testing.T) {
+	l := NewArrayList()
+	_ = l.Add(1)
+	_ = l.Add(2)
+	_ = l.Add(3)
+	t.Logf("ArrayList Before Clear: %v\n", l.String())
+
+	l.Clear()
+	t.Logf("ArrayList After Clear: %v\n", l.String())
+}
+
+func TestArrayList_Delete(t *testing.T) {
+	l := NewArrayList()
+	_ = l.Add(1)
+	_ = l.Add(2)
+	_ = l.Add(3)
+	_ = l.Add(4)
+	_ = l.Add(5)
+	_ = l.Add(6)
+	_ = l.Add(7)
+	_ = l.Add(8)
+	_ = l.Add(9)
+	_ = l.Add(10)
+	t.Logf("ArrayList Before Delete: %v\n", l.String())
+
+	_ = l.Delete(1)
+	t.Logf("ArrayList After Delete: %v\n", l.String())
+}
+
+func TestArrayList_String(t *testing.T) {
+	l := NewArrayList()
+	t.Logf("ArrayList String(): %v\n", l.String())
 }
 
 func TestDoubleLinkedList_Add(t *testing.T) {
-	type args struct {
-		value interface{}
-	}
-	tests := []struct {
-		name    string
-		args    args
-		wantErr bool
-	}{
-		// TODO: Add test cases.
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			l := DoubleLinkedList{}
-			if err := l.Add(tt.args.value); (err != nil) != tt.wantErr {
-				t.Errorf("Add() error = %v, wantErr %v", err, tt.wantErr)
-			}
-		})
-	}
+
 }
 
 func TestDoubleLinkedList_Get(t *testing.T) {
-	type args struct {
-		index int
-	}
-	tests := []struct {
-		name    string
-		args    args
-		want    interface{}
-		wantErr bool
-	}{
-		// TODO: Add test cases.
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			l := DoubleLinkedList{}
-			got, err := l.Get(tt.args.index)
-			if (err != nil) != tt.wantErr {
-				t.Errorf("Get() error = %v, wantErr %v", err, tt.wantErr)
-				return
-			}
-			if !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("Get() got = %v, want %v", got, tt.want)
-			}
-		})
-	}
+
 }
 
 func TestDoubleLinkedList_Set(t *testing.T) {
-	type args struct {
-		index int
-		value interface{}
-	}
-	tests := []struct {
-		name    string
-		args    args
-		wantErr bool
-	}{
-		// TODO: Add test cases.
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			l := DoubleLinkedList{}
-			if err := l.Set(tt.args.index, tt.args.value); (err != nil) != tt.wantErr {
-				t.Errorf("Set() error = %v, wantErr %v", err, tt.wantErr)
-			}
-		})
-	}
+
 }
 
 func TestDoubleLinkedList_Size(t *testing.T) {
-	tests := []struct {
-		name string
-		want int
-	}{
-		// TODO: Add test cases.
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			l := DoubleLinkedList{}
-			if got := l.Size(); got != tt.want {
-				t.Errorf("Size() = %v, want %v", got, tt.want)
-			}
-		})
-	}
+
 }
 
 func TestLinkedList_Add(t *testing.T) {
-	type args struct {
-		value interface{}
-	}
-	tests := []struct {
-		name    string
-		args    args
-		wantErr bool
-	}{
-		// TODO: Add test cases.
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			l := LinkedList{}
-			if err := l.Add(tt.args.value); (err != nil) != tt.wantErr {
-				t.Errorf("Add() error = %v, wantErr %v", err, tt.wantErr)
-			}
-		})
-	}
+
 }
 
 func TestLinkedList_Get(t *testing.T) {
-	type args struct {
-		index int
-	}
-	tests := []struct {
-		name    string
-		args    args
-		want    interface{}
-		wantErr bool
-	}{
-		// TODO: Add test cases.
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			l := LinkedList{}
-			got, err := l.Get(tt.args.index)
-			if (err != nil) != tt.wantErr {
-				t.Errorf("Get() error = %v, wantErr %v", err, tt.wantErr)
-				return
-			}
-			if !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("Get() got = %v, want %v", got, tt.want)
-			}
-		})
-	}
+
 }
 
 func TestLinkedList_Set(t *testing.T) {
-	type args struct {
-		index int
-		value interface{}
-	}
-	tests := []struct {
-		name    string
-		args    args
-		wantErr bool
-	}{
-		// TODO: Add test cases.
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			l := LinkedList{}
-			if err := l.Set(tt.args.index, tt.args.value); (err != nil) != tt.wantErr {
-				t.Errorf("Set() error = %v, wantErr %v", err, tt.wantErr)
-			}
-		})
-	}
+
 }
 
 func TestLinkedList_Size(t *testing.T) {
-	tests := []struct {
-		name string
-		want int
-	}{
-		// TODO: Add test cases.
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			l := LinkedList{}
-			if got := l.Size(); got != tt.want {
-				t.Errorf("Size() = %v, want %v", got, tt.want)
-			}
-		})
-	}
+
 }
