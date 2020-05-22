@@ -9,12 +9,12 @@ import (
 type List interface {
 	Size() int
 	Get(index int) (interface{}, error)
-	Add(value interface{}) error               // 追加
-	Set(index int, value interface{}) error    // 更新
-	Insert(index int, value interface{}) error // 插入
+	Add(value interface{}) error            // 追加
+	Set(index int, value interface{}) error // 更新
 	Clear()
 	Delete(index int) error
 	String() string
+	Iterable
 }
 
 // ArrayList 基于数组的线性表
@@ -42,12 +42,22 @@ func (l *ArrayList) Get(index int) (interface{}, error) {
 }
 
 func (l *ArrayList) Add(value interface{}) error {
-	if l.size >= len(l.data) {
-		return errors.New("array already full")
-	}
+	// 检查数组容量是否足够
+	l.ensureCapacity()
 	l.data[l.size] = value
 	l.size++
 	return nil
+}
+
+func (l *ArrayList) ensureCapacity() {
+	// 扩容
+	if l.size == cap(l.data) {
+		// 开辟新内存，长度是原数组的2倍
+		newData := make([]interface{}, 2*l.size)
+		// 拷贝数组
+		copy(newData, l.data)
+		l.data = newData
+	}
 }
 
 func (l *ArrayList) Set(index int, value interface{}) error {
@@ -55,18 +65,6 @@ func (l *ArrayList) Set(index int, value interface{}) error {
 		return errors.New("array out of index")
 	}
 	l.data[index] = value
-	return nil
-}
-
-func (l *ArrayList) Insert(index int, value interface{}) error {
-	if index < 0 || index >= l.size {
-		return errors.New("array out of index")
-	}
-	// 创建新数组，长度是原数组2倍
-
-	// copy 原数组元素
-
-	l.size++
 	return nil
 }
 
@@ -82,6 +80,13 @@ func (l *ArrayList) Delete(index int) error {
 	l.data = append(l.data[:index], l.data[index+1:]...)
 	l.size--
 	return nil
+}
+
+func (l *ArrayList) Iterator() Iterator {
+	return &ArrayListIterator{
+		list:      l,
+		currIndex: 0,
+	}
 }
 
 func (l *ArrayList) String() string {

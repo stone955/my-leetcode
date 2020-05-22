@@ -6,9 +6,9 @@ import (
 
 func TestArrayList_Add(t *testing.T) {
 	l := NewArrayList()
-	_ = l.Add(1)
-	_ = l.Add(2)
-	_ = l.Add(3)
+	for i := 0; i < 20; i++ {
+		_ = l.Add(i)
+	}
 	t.Logf("ArrayList String(): %v\n", l.String())
 }
 
