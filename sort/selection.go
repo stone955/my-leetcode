@@ -19,7 +19,6 @@ func SelectionSort(in []int) {
 			in[i] = in[minPos]
 			in[minPos] = temp
 		}
-		fmt.Printf("第 %v 次遍历后, 最小的元素是第 %v 个\n", i, minPos)
 	}
 	fmt.Printf("SelectionSort() %v\n", in)
 }
