@@ -1,24 +1,28 @@
 package sort
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 // SelectionSort 选择排序
-func SelectionSort(in []int) {
-	for i := 0; i < len(in)-1; i++ {
+func SelectionSort(arr []int) {
+	begin := time.Now()
+	for i := 0; i < len(arr)-1; i++ {
 		// 第i次遍历, 选出最小的与第i个元素交换位置
 		minPos := i
-		temp := in[i]
-		for j := i + 1; j < len(in); j++ {
-			if in[j] < temp {
+		temp := arr[i]
+		for j := i + 1; j < len(arr); j++ {
+			if arr[j] < temp {
 				minPos = j
-				temp = in[minPos]
+				temp = arr[minPos]
 			}
 		}
-		if in[minPos] < in[i] {
-			temp = in[i]
-			in[i] = in[minPos]
-			in[minPos] = temp
+		if arr[minPos] < arr[i] {
+			temp = arr[i]
+			arr[i] = arr[minPos]
+			arr[minPos] = temp
 		}
 	}
-	fmt.Printf("SelectionSort() %v\n", in)
+	fmt.Printf("SelectionSort cost %v, arr %v\n", time.Now().Sub(begin).Milliseconds(), arr)
 }

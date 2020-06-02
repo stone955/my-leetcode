@@ -1,16 +1,21 @@
 package sort
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 // BubbleSort 冒泡排序
-func BubbleSort(in []int) {
-	for i := len(in) - 1; i > 0; i-- {
+func BubbleSort(arr []int) {
+	begin := time.Now()
+
+	for i := len(arr) - 1; i > 0; i-- {
 		var swapped bool
 		for j := 0; j < i; j++ {
-			if in[j] > in[j+1] {
-				temp := in[j+1]
-				in[j+1] = in[j]
-				in[j] = temp
+			if arr[j] > arr[j+1] {
+				temp := arr[j+1]
+				arr[j+1] = arr[j]
+				arr[j] = temp
 				swapped = true
 			}
 		}
@@ -18,5 +23,5 @@ func BubbleSort(in []int) {
 			break
 		}
 	}
-	fmt.Printf("BubbleSort() %v\n", in)
+	fmt.Printf("BubbleSort cost %v, arr %v\n", time.Now().Sub(begin).Milliseconds(), arr)
 }

@@ -1,18 +1,23 @@
 package sort
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 // InsertionSort 插入排序
-func InsertionSort(in []int) {
-	for i := 0; i < len(in)-1; i++ {
+func InsertionSort(arr []int) {
+	begin := time.Now()
+
+	for i := 0; i < len(arr)-1; i++ {
 		for j := i + 1; j > 0; j-- {
-			if in[j-1] > in[j] {
+			if arr[j-1] > arr[j] {
 				// 交换
-				temp := in[j]
-				in[j] = in[j-1]
-				in[j-1] = temp
+				temp := arr[j]
+				arr[j] = arr[j-1]
+				arr[j-1] = temp
 			}
 		}
 	}
-	fmt.Printf("InsertionSort() %v\n", in)
+	fmt.Printf("InsertionSort cost %v, arr %v\n", time.Now().Sub(begin).Milliseconds(), arr)
 }

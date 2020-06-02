@@ -12,6 +12,7 @@ const (
 	Bubble
 	Insertion
 	Shell
+	Shell2
 )
 
 type Type int
@@ -26,6 +27,8 @@ func (t Type) String() string {
 		return "InsertionSort"
 	case Shell:
 		return "ShellSort"
+	case Shell2:
+		return "ShellSort2"
 	}
 	return "Unknown"
 }
@@ -50,6 +53,8 @@ func CheckSort(typ Type, num int) {
 		InsertionSort(in)
 	case Shell:
 		ShellSort(in)
+	case Shell2:
+		ShellSort2(in)
 	}
 
 	sort.Ints(checkIn)
