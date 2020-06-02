@@ -64,11 +64,18 @@ func CheckSort(typ Type, num int) {
 
 	sort.Ints(checkIn)
 
+	if checked := check(in, checkIn); checked {
+		fmt.Printf("%v CheckSort success\n", typ.String())
+	} else {
+		fmt.Printf("%v CheckSort error\n", typ.String())
+	}
+}
+
+func check(in []int, checkIn []int) bool {
 	for i := 0; i < len(in); i++ {
 		if in[i] != checkIn[i] {
-			fmt.Printf("%v CheckSort error\n", typ.String())
-			break
+			return false
 		}
 	}
-	fmt.Printf("%v CheckSort success\n", typ.String())
+	return true
 }
