@@ -13,6 +13,7 @@ const (
 	Insertion
 	Shell
 	Shell2
+	Merge
 )
 
 type Type int
@@ -29,6 +30,8 @@ func (t Type) String() string {
 		return "ShellSort"
 	case Shell2:
 		return "ShellSort2"
+	case Merge:
+		return "MergeSort"
 	}
 	return "Unknown"
 }
@@ -55,6 +58,8 @@ func CheckSort(typ Type, num int) {
 		ShellSort(in)
 	case Shell2:
 		ShellSort2(in)
+	case Merge:
+		MergeSort(in)
 	}
 
 	sort.Ints(checkIn)
