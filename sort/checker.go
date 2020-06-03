@@ -14,6 +14,8 @@ const (
 	Shell
 	Shell2
 	Merge
+	SinglePivotQuick
+	DualPivotQuick
 )
 
 type Type int
@@ -32,6 +34,10 @@ func (t Type) String() string {
 		return "ShellSort2"
 	case Merge:
 		return "MergeSort"
+	case SinglePivotQuick:
+		return "SinglePivotQuick"
+	case DualPivotQuick:
+		return "DualPivotQuick"
 	}
 	return "Unknown"
 }
@@ -60,6 +66,10 @@ func CheckSort(typ Type, num int) {
 		ShellSort2(in)
 	case Merge:
 		MergeSort(in)
+	case SinglePivotQuick:
+		SinglePivotQuickSort(in)
+	case DualPivotQuick:
+		DualPivotQuickSort(in)
 	}
 
 	sort.Ints(checkIn)
