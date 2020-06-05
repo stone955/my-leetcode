@@ -16,6 +16,8 @@ const (
 	Merge
 	SinglePivotQuick
 	DualPivotQuick
+	Counting
+	SumCounting
 )
 
 type Type int
@@ -38,52 +40,60 @@ func (t Type) String() string {
 		return "SinglePivotQuick"
 	case DualPivotQuick:
 		return "DualPivotQuick"
+	case Counting:
+		return "Counting"
+	case SumCounting:
+		return "SumCounting"
 	}
 	return "Unknown"
 }
 
-func CheckSort(typ Type, num int) {
-	in := make([]int, num)
-	checkIn := make([]int, num)
+func CheckSort(typ Type, num, n int) {
+	arr := make([]int, num)
+	checkArr := make([]int, num)
 	source := rand.NewSource(time.Now().Unix())
 	r := rand.New(source)
 	for i := 0; i < num; i++ {
-		r := r.Intn(num)
-		in[i] = r
-		checkIn[i] = r
+		r := r.Intn(n)
+		arr[i] = r
+		checkArr[i] = r
 	}
 
 	switch typ {
 	case Selection:
-		SelectionSort(in)
+		SelectionSort(arr)
 	case Bubble:
-		BubbleSort(in)
+		BubbleSort(arr)
 	case Insertion:
-		InsertionSort(in)
+		InsertionSort(arr)
 	case Shell:
-		ShellSort(in)
+		ShellSort(arr)
 	case Shell2:
-		ShellSort2(in)
+		ShellSort2(arr)
 	case Merge:
-		MergeSort(in)
+		MergeSort(arr)
 	case SinglePivotQuick:
-		SinglePivotQuickSort(in)
+		SinglePivotQuickSort(arr)
 	case DualPivotQuick:
-		DualPivotQuickSort(in)
+		DualPivotQuickSort(arr)
+	case Counting:
+		CountingSort(arr)
+	case SumCounting:
+		SumCountingSort(arr)
 	}
 
-	sort.Ints(checkIn)
+	sort.Ints(checkArr)
 
-	if checked := check(in, checkIn); checked {
+	if checked := check(arr, checkArr); checked {
 		fmt.Printf("%v CheckSort success\n", typ.String())
 	} else {
 		fmt.Printf("%v CheckSort error\n", typ.String())
 	}
 }
 
-func check(in []int, checkIn []int) bool {
-	for i := 0; i < len(in); i++ {
-		if in[i] != checkIn[i] {
+func check(arr []int, checkArr []int) bool {
+	for i := 0; i < len(arr); i++ {
+		if arr[i] != checkArr[i] {
 			return false
 		}
 	}

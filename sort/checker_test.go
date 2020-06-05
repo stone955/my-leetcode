@@ -3,12 +3,14 @@ package sort
 import "testing"
 
 func TestCheckSort(t *testing.T) {
-	//CheckSort(Selection, 100)
-	//CheckSort(Bubble, 100)
-	//CheckSort(Insertion, 100)
-	//CheckSort(Shell, 100)
-	//CheckSort(Shell2, 100)
-	//CheckSort(Merge, 100)
-	CheckSort(SinglePivotQuick, 100)
-	//CheckSort(DualPivotQuick, 100)
+	//CheckSort(Selection, 1000000, 750
+	//CheckSort(Bubble, 1000000, 750)
+	//CheckSort(Insertion, 1000000, 750)
+	//CheckSort(Shell, 1000000, 750)
+	//CheckSort(Shell2, 1000000, 750)
+	//CheckSort(Merge, 1000000, 750)
+	//CheckSort(SinglePivotQuick, 1000000, 750)
+	//CheckSort(DualPivotQuick,1000000, 750)
+	//CheckSort(Counting, 1000000, 750)
+	//CheckSort(SumCounting, 1000000, 750)
 }
