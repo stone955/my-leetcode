@@ -35,18 +35,17 @@ func BubbleSort2(arr []int) {
 // BubbleSort3 冒泡排序优化
 // 记录上次交换位置，减少遍历元素个数
 func BubbleSort3(arr []int) {
-	for i := len(arr) - 1; i > 0; i-- {
-		var swapped bool
-		for j := 0; j < i; j++ {
+	index := len(arr) - 1
+	for index > 0 {
+		var swapped int
+		for j := 0; j < index; j++ {
 			if arr[j] > arr[j+1] {
 				temp := arr[j+1]
 				arr[j+1] = arr[j]
 				arr[j] = temp
-				swapped = true
+				swapped = j + 1
 			}
 		}
-		if !swapped {
-			break
-		}
+		index = swapped
 	}
 }
