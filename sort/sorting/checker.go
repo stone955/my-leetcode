@@ -69,7 +69,7 @@ func CheckSort(typ Type, num, n int) {
 	sort.Ints(checkArr)
 
 	if checked := check(arr, checkArr); checked {
-		fmt.Printf("CheckSort success type= %v, costs= %v\n", typ, costs)
+		fmt.Printf("CheckSort success type= %v, costs= %v ms\n", typ, costs)
 	} else {
 		fmt.Printf("CheckSort error type= %v\n", typ)
 	}
