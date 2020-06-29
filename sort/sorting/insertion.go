@@ -1,14 +1,7 @@
-package sort
-
-import (
-	"fmt"
-	"time"
-)
+package sorting
 
 // InsertionSort 插入排序
 func InsertionSort(arr []int) {
-	begin := time.Now()
-
 	for i := 0; i < len(arr)-1; i++ {
 		for j := i + 1; j > 0; j-- {
 			if arr[j-1] > arr[j] {
@@ -19,5 +12,4 @@ func InsertionSort(arr []int) {
 			}
 		}
 	}
-	fmt.Printf("InsertionSort cost %v, arr %v\n", time.Now().Sub(begin).Milliseconds(), arr)
 }

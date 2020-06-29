@@ -1,13 +1,7 @@
-package sort
-
-import (
-	"fmt"
-	"time"
-)
+package sorting
 
 // SelectionSort 选择排序
 func SelectionSort(arr []int) {
-	begin := time.Now()
 	for i := 0; i < len(arr)-1; i++ {
 		// 第i次遍历, 选出最小的与第i个元素交换位置
 		minPos := i
@@ -24,5 +18,4 @@ func SelectionSort(arr []int) {
 			arr[minPos] = temp
 		}
 	}
-	fmt.Printf("SelectionSort cost %v, arr %v\n", time.Now().Sub(begin).Milliseconds(), arr)
 }

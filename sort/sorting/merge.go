@@ -1,18 +1,11 @@
-package sort
-
-import (
-	"fmt"
-	"time"
-)
+package sorting
 
 func MergeSort(arr []int) {
-	begin := time.Now()
 	sortedArr := mergeSort(arr)
 	// 赋值
 	for i := 0; i < len(arr); i++ {
 		arr[i] = sortedArr[i]
 	}
-	fmt.Printf("MergeSort cost %v, arr %v\n", time.Now().Sub(begin).Milliseconds(), sortedArr)
 }
 
 func mergeSort(arr []int) []int {
@@ -28,7 +21,6 @@ func mergeSort(arr []int) []int {
 }
 
 func merge(left, right []int) []int {
-
 	mergedArr := make([]int, len(left)+len(right))
 
 	i := 0 // 前半段起始位置

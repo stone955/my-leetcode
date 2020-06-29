@@ -1,15 +1,8 @@
-package sort
-
-import (
-	"fmt"
-	"time"
-)
+package sorting
 
 // SinglePivotQuickSort 单轴快排
 func SinglePivotQuickSort(arr []int) {
-	begin := time.Now()
 	singlePivotQuickSort(arr, 0, len(arr)-1)
-	fmt.Printf("SinglePivotQuickSort cost %v, arr %v\n", time.Now().Sub(begin).Milliseconds(), arr)
 }
 
 func singlePivotQuickSort(arr []int, leftBound, rightBound int) {
@@ -45,17 +38,13 @@ func singlePivotQuickSort(arr []int, leftBound, rightBound int) {
 	arr[rightBound] = arr[left]
 	arr[left] = temp
 
-	fmt.Println(arr, left, right, leftBound, rightBound)
-
 	singlePivotQuickSort(arr, 0, left-1)
 	singlePivotQuickSort(arr, left+1, rightBound)
 }
 
 // DualPivotQuickSort 双轴快排
 func DualPivotQuickSort(arr []int) {
-	begin := time.Now()
 	dualPivotQuickSort(arr)
-	fmt.Printf("DualPivotQuickSort cost %v, arr %v\n", time.Now().Sub(begin).Milliseconds(), arr)
 }
 
 func dualPivotQuickSort(arr []int) {

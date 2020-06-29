@@ -1,9 +1,4 @@
-package sort
-
-import (
-	"fmt"
-	"time"
-)
+package sorting
 
 // getMinMax 计算数组的边界
 func getMinMax(arr []int) (int, int) {
@@ -21,8 +16,6 @@ func getMinMax(arr []int) (int, int) {
 
 // CountingSort 计数排序，不稳定的排序
 func CountingSort(arr []int) {
-	begin := time.Now()
-
 	// 先计算边界
 	min, max := getMinMax(arr)
 	// 创建计数数组
@@ -43,15 +36,10 @@ func CountingSort(arr []int) {
 			idx++
 		}
 	}
-
-	fmt.Printf("CountingSort cost %v, arr %v\n",
-		time.Now().Sub(begin).Milliseconds(), arr)
 }
 
 // SumCountingSort 累加计数排序，稳定的排序
 func SumCountingSort(arr []int) {
-	begin := time.Now()
-
 	// 先计算边界
 	min, max := getMinMax(arr)
 	// 创建计数数组
@@ -81,6 +69,4 @@ func SumCountingSort(arr []int) {
 	for i := 0; i < len(arr); i++ {
 		arr[i] = out[i]
 	}
-
-	fmt.Printf("CountingSort cost %v, arr %v\n", time.Now().Sub(begin).Milliseconds(), arr)
 }

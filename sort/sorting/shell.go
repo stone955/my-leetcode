@@ -1,14 +1,7 @@
-package sort
-
-import (
-	"fmt"
-	"time"
-)
+package sorting
 
 // ShellSort 希尔排序-固定间隔
 func ShellSort(arr []int) {
-	begin := time.Now()
-
 	// 固定间隔
 	for gap := 4; gap > 0; gap /= 2 {
 		for i := 0; i < len(arr)-gap; i += gap {
@@ -22,13 +15,10 @@ func ShellSort(arr []int) {
 			}
 		}
 	}
-	fmt.Printf("ShellSort cost %v, arr %v\n", time.Now().Sub(begin).Milliseconds(), arr)
 }
 
 // ShellSort2 希尔排序-根据数组长度计算间隔
 func ShellSort2(arr []int) {
-	begin := time.Now()
-
 	// 计算gap
 	h := 1
 	for h < len(arr) {
@@ -47,5 +37,4 @@ func ShellSort2(arr []int) {
 			}
 		}
 	}
-	fmt.Printf("ShellSort2 cost %v, arr %v\n", time.Now().Sub(begin).Milliseconds(), arr)
 }

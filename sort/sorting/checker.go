@@ -1,4 +1,4 @@
-package sort
+package sorting
 
 import (
 	"fmt"
@@ -8,45 +8,21 @@ import (
 )
 
 const (
-	Selection = iota
-	Bubble
-	Insertion
-	Shell
-	Shell2
-	Merge
-	SinglePivotQuick
-	DualPivotQuick
-	Counting
-	SumCounting
+	Bubble           = "BubbleSort"
+	Bubble2          = "BubbleSort2"
+	Bubble3          = "BubbleSort3"
+	Selection        = "SelectionSort"
+	Insertion        = "InsertionSort"
+	Shell            = "ShellSort"
+	Shell2           = "Shell2Sort"
+	Merge            = "MergeSort"
+	SinglePivotQuick = "SinglePivotQuickSort"
+	DualPivotQuick   = "DualPivotQuickSort"
+	Counting         = "CountingSort"
+	SumCounting      = "SumCountingSort"
 )
 
-type Type int
-
-func (t Type) String() string {
-	switch t {
-	case Selection:
-		return "SelectionSort"
-	case Bubble:
-		return "BubbleSort"
-	case Insertion:
-		return "InsertionSort"
-	case Shell:
-		return "ShellSort"
-	case Shell2:
-		return "ShellSort2"
-	case Merge:
-		return "MergeSort"
-	case SinglePivotQuick:
-		return "SinglePivotQuick"
-	case DualPivotQuick:
-		return "DualPivotQuick"
-	case Counting:
-		return "Counting"
-	case SumCounting:
-		return "SumCounting"
-	}
-	return "Unknown"
-}
+type Type string
 
 func CheckSort(typ Type, num, n int) {
 	arr := make([]int, num)
@@ -59,11 +35,17 @@ func CheckSort(typ Type, num, n int) {
 		checkArr[i] = r
 	}
 
+	begin := time.Now()
+
 	switch typ {
-	case Selection:
-		SelectionSort(arr)
 	case Bubble:
 		BubbleSort(arr)
+	case Bubble2:
+		BubbleSort2(arr)
+	case Bubble3:
+		BubbleSort3(arr)
+	case Selection:
+		SelectionSort(arr)
 	case Insertion:
 		InsertionSort(arr)
 	case Shell:
@@ -82,12 +64,14 @@ func CheckSort(typ Type, num, n int) {
 		SumCountingSort(arr)
 	}
 
+	costs := time.Now().Sub(begin).Milliseconds()
+
 	sort.Ints(checkArr)
 
 	if checked := check(arr, checkArr); checked {
-		fmt.Printf("%v CheckSort success\n", typ.String())
+		fmt.Printf("CheckSort success type= %v, costs= %v\n", typ, costs)
 	} else {
-		fmt.Printf("%v CheckSort error\n", typ.String())
+		fmt.Printf("CheckSort error type= %v\n", typ)
 	}
 }
 
