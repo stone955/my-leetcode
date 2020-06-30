@@ -12,6 +12,7 @@ const (
 	Bubble2          = "BubbleSort2"
 	Bubble3          = "BubbleSort3"
 	Selection        = "SelectionSort"
+	Heap             = "HeapSort"
 	Insertion        = "InsertionSort"
 	Shell            = "ShellSort"
 	Shell2           = "Shell2Sort"
@@ -46,6 +47,8 @@ func CheckSort(typ Type, num, n int) {
 		BubbleSort3(arr)
 	case Selection:
 		SelectionSort(arr)
+	case Heap:
+		HeapSort(arr)
 	case Insertion:
 		InsertionSort(arr)
 	case Shell:
