@@ -8,23 +8,38 @@ import (
 )
 
 const (
-	Bubble           = "BubbleSort"
-	Bubble2          = "BubbleSort2"
-	Bubble3          = "BubbleSort3"
-	Selection        = "SelectionSort"
-	Heap             = "HeapSort"
-	Insertion        = "InsertionSort"
-	Shell            = "ShellSort"
-	Shell2           = "Shell2Sort"
-	Merge            = "MergeSort"
+	// Bubble 冒泡排序
+	Bubble = "BubbleSort"
+	// Bubble2 冒泡排序优化
+	Bubble2 = "BubbleSort2"
+	// Bubble3 冒泡排序优化2
+	Bubble3 = "BubbleSort3"
+	// Selection 选择排序
+	Selection = "SelectionSort"
+	// Heap 堆排序
+	Heap = "HeapSort"
+	// Insertion 插入排序
+	Insertion = "InsertionSort"
+	// Shell 希尔排序
+	Shell = "ShellSort"
+	// Shell2 希尔排序优化
+	Shell2 = "Shell2Sort"
+	// Merge 归并排序
+	Merge = "MergeSort"
+	// SinglePivotQuick 单轴快排
 	SinglePivotQuick = "SinglePivotQuickSort"
-	DualPivotQuick   = "DualPivotQuickSort"
-	Counting         = "CountingSort"
-	SumCounting      = "SumCountingSort"
+	// DualPivotQuick 双轴快排
+	DualPivotQuick = "DualPivotQuickSort"
+	// Counting 计数排序
+	Counting = "CountingSort"
+	// SumCounting 合并计数排序
+	SumCounting = "SumCountingSort"
 )
 
+// Type 排序类型
 type Type string
 
+// CheckSort 验证排序结果
 func CheckSort(typ Type, num, n int) {
 	arr := make([]int, num)
 	checkArr := make([]int, num)

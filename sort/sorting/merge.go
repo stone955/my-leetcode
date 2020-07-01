@@ -1,5 +1,6 @@
 package sorting
 
+// MergeSort 归并排序
 func MergeSort(arr []int) {
 	sortedArr := mergeSort(arr)
 	// 赋值
