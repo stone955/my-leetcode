@@ -20,6 +20,8 @@ const (
 	Heap = "HeapSort"
 	// Insertion 插入排序
 	Insertion = "InsertionSort"
+	// Insertion2 插入排序优化，交换改成挪动
+	Insertion2 = "InsertionSort2"
 	// Shell 希尔排序
 	Shell = "ShellSort"
 	// Shell2 希尔排序优化
@@ -66,6 +68,8 @@ func CheckSort(typ Type, num, n int) {
 		HeapSort(arr)
 	case Insertion:
 		InsertionSort(arr)
+	case Insertion2:
+		InsertionSort2(arr)
 	case Shell:
 		ShellSort(arr)
 	case Shell2:

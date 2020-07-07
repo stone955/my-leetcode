@@ -10,6 +10,7 @@ func TestCheckSort(t *testing.T) {
 	CheckSort(Selection, num, n)
 	CheckSort(Heap, num, n)
 	CheckSort(Insertion, num, n)
+	CheckSort(Insertion2, num, n)
 	CheckSort(Shell, num, n)
 	CheckSort(Shell2, num, n)
 	CheckSort(Merge, num, n)
